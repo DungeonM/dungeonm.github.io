@@ -17,7 +17,7 @@ $('#load').on('click',loadGroups);
   function getUrl(method, params) {
   if (!method) throw new Error('вы не указали метод');
      params = params || {};
-	 params ['access_token'] = '375eb472d8769d0331c2dbcd7c9227e272ab58f396d6a1949be76c8bf8c7ec8445a6957d36d60f89aaf10'
+	 params ['access_token'] = '178ce78456c4c9574c7a73c61b82d4db4533acaeb511a8860ff0664d25c4524f52266b114994d3b6e2c61'
       return 'https://api.vk.com/method/' + method + '?' + $.param(params);
   }
   
