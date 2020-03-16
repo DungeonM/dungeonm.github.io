@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+</head>
+<body>
+<button id ="load">Показать группы</button>
+<ul></ul>
+
+<script>
+$('#load').on('click',loadGroups);
+
+  function getUrl(method, params) {
+  if (!method) throw new Error('вы не указали метод');
+     params = params || {};
+	 params ['access_token'] = '375eb472d8769d0331c2dbcd7c9227e272ab58f396d6a1949be76c8bf8c7ec8445a6957d36d60f89aaf10'
+      return 'https://api.vk.com/method/' + method + '?' + $.param(params);
+  }
+  
+  function sendRequest(method, params,func) {
+  $.ajax({
+ 	 url: getUrl(method,params),
+	 method: 'GET',
+	 dataType: 'JSONP',
+	 success: func 
+	   
+      });
+  
+  }
+  
+  function loadGroups() {
+  sendRequest('groups.get', { count: 60,fields: 'members_count'}, function (data) {
+  console.log(data);
+  });
+  
+  }
+ 
+
+
+</script>
+
+</body>
+</html>
