@@ -1,47 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<meta charset="utf-8" />
-<title>VK API</title>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <meta charset="UTF-8">
+	  <title>Document</title>
+	  <link rel="stylesheet" href="style.css">
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	   <script src="https://api-maps.yandex.ru/2.1/?apikey=3be5b3eb-45cf-40b0-a19f-e3bdbd7d835d&lang=ru_RU" type="text/javascript">
+    </script>
+	<script type="text/javascript">
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+    function init(){
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            // Чтобы не определять координаты центра карты вручную,
+            // воспользуйтесь инструментом Определение координат.
+            center: [55.76, 37.64],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 7
+        });
+    }
+</script>
 
 </head>
 <body>
-<button id ="load">Показать группы</button>
-<ul></ul>
-
-<script>
-$('#load').on('click',loadGroups);
-
-  function getUrl(method, params) {
-  if (!method) throw new Error('вы не указали метод');
-     params = params || {};
-	 params ['access_token'] = '178ce78456c4c9574c7a73c61b82d4db4533acaeb511a8860ff0664d25c4524f52266b114994d3b6e2c61'
-      return 'https://api.vk.com/method/' + method + '?' + $.param(params);
-  }
-  
-  function sendRequest(method, params,func) {
-  $.ajax({
- 	 url: getUrl(method,params),
-	 method: 'GET',
-	 dataType: 'JSONP',
-	 success: func 
+   <header>
+   <div class="header__logo"><p>autoprobkam.net</div>
+   <nav>
+       <div class="topnav" id="myTopnav">
+	   <a href="">Главная</a>
+	   <a href="">Предложения</a>
+	   <a href="">Решения</a>
+	   <a href="">Новости</a>
+	   <a href="">О проекте</a>
+	   </div>
 	   
-      });
-  
-  }
-  
-  function loadGroups() {
-  sendRequest('groups.get', { count: 60,fields: 'members_count'}, function (data) {
-  console.log(data);
-  });
-  
-  }
- 
+   </nav>
+   <div class="reg" >
+    <nav>
+	 <div class="topnav1" id="myTopnav1">
+	<a href="">Регистрация</a>
+	<a href="">Вход</a>
+	</div>
+	</nav>
+	</div>
+   </header>
+   <main>
+   
+   <div id="map" style="width: 100%; height: 800px"></div>
+   
+   </main>
+
+<div  class="footer" id="footer1">
+
+&copy fesefsf;
+
+</div>
 
 
-</script>
 
+   <script src="script.js"></script>
 </body>
 </html>
